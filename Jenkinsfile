@@ -18,7 +18,7 @@ pipeline {
       
            stage('Git-Checkout') {
             steps {
-                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/nahidkishore/Node-React-Full-Stack-App.git'
+                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/shashank05r/Front-Backend-Parallel-CI.git'
             }
         }
         
