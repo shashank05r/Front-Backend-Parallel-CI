@@ -4,17 +4,7 @@ pipeline {
     environment{
         SCANNER_HOME= tool 'sonar-scanner'
     }
-
-    stages {
-
-      stage('Clean Workspace'){
-            steps{
-                cleanWs()
-            }
-        }
-
-      
-           stage('Git-Checkout') {
+      stage('Git-Checkout') {
             steps {
                 git branch: 'main', changelog: false, poll: false, url: 'https://github.com/shashank05r/Front-Backend-Parallel-CI.git'
             }
@@ -127,18 +117,5 @@ pipeline {
         }
      
     }
-
-
- post {
-            always {
-        emailext attachLog: true,
-            subject: "'${currentBuild.result}'",
-            body: "Project: ${env.JOB_NAME}<br/>" +
-                "Build Number: ${env.BUILD_NUMBER}<br/>" +
-                "URL: ${env.BUILD_URL}<br/>",
-            to: 'shashank05reddy@gmail.com',
-            attachmentsPattern: 'trivy.txt'
-        }
-        }
 
 }
